@@ -65,6 +65,7 @@ The major objectives of the project are:
 - Compare responses from different AI systems.
 
 ---
+## 📌Milestones
 MILESTONE 1 – PROJECT FOUNDATION
 
 • Developed the basic full-stack AI Response Quality Evaluator platform.
