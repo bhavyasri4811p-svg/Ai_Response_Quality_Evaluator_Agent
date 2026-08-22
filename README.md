@@ -65,7 +65,80 @@ The major objectives of the project are:
 - Compare responses from different AI systems.
 
 ---
+MILESTONE 1 – PROJECT FOUNDATION
 
+• Developed the basic full-stack AI Response Quality Evaluator platform.
+• Created the React + TypeScript frontend for entering AI questions and responses.
+• Developed the FastAPI backend to handle evaluation requests.
+• Integrated frontend and backend through APIs.
+• Implemented the initial response evaluation workflow.
+• Displayed evaluation results through the frontend interface.
+• Established the basic project structure for further development.
+
+MILESTONE 2 – RAG AND MULTI-AGENT EVALUATION
+
+• Integrated Retrieval-Augmented Generation (RAG) into the evaluation system.
+• Created a knowledge base from project documents.
+• Used text splitting and Hugging Face embeddings to convert documents into vector representations.
+• Created and stored embeddings in ChromaDB vector database.
+• Implemented a retriever to fetch relevant context from the knowledge base.
+• Developed separate specialized evaluation agents:
+  - Relevance Judge Agent
+  - Accuracy Judge Agent
+  - Hallucination Detection Agent
+• Implemented the Judge Orchestrator to coordinate the evaluation agents.
+• Used retrieved context to support accuracy and hallucination evaluation.
+• Generated dimension-wise evaluation scores and suggestions.
+
+MILESTONE 3 – ADVANCED EVALUATION AND BATCH PROCESSING
+
+• Added the Completeness Agent to evaluate whether responses contain all important information.
+• Added the Verdict Agent to generate the final evaluation verdict.
+• Extended the evaluation pipeline to combine multiple evaluation dimensions.
+• Implemented overall evaluation scoring and final verdict generation.
+• Added PASS, NEEDS IMPROVEMENT, and FAIL verdict categories.
+• Implemented batch evaluation using CSV files.
+• Created the batch evaluator to process multiple questions and AI responses automatically.
+• Added batch evaluation UI in the React frontend.
+• Integrated batch evaluation results with the evaluation history.
+• Enabled evaluation of multiple responses without manually evaluating each response separately.
+
+MILESTONE 4 – DASHBOARD, REPORTING, TESTING AND FINALIZATION
+
+• Developed the Evaluation Scoring Dashboard to display evaluation results.
+• Added total evaluation statistics and overall verdict information.
+• Added average Relevance, Accuracy, and Completeness scores.
+• Added hallucination-related evaluation statistics.
+• Connected evaluation results and batch evaluation results with the dashboard and history.
+• Implemented evaluation report generation in PDF format.
+• Included project details, evaluation summaries, dimension-wise scores, verdicts, hallucination results, and improvement recommendations in reports.
+• Conducted end-to-end testing for single evaluation and batch evaluation workflows.
+• Tested RAG retrieval, agent scoring, verdict generation, dashboard updates, PDF generation, error handling, and invalid inputs.
+• Performed scoring consistency validation by running the same dataset multiple times and comparing Relevance, Accuracy, Completeness, Hallucination Detection, and Final Verdict results.
+• Added support for comparing evaluations from different AI systems using the same questions.
+• Prepared the final project demonstration workflow.
+• Prepared technical documentation covering the architecture, implementation, agents, RAG workflow, dashboard, reporting, testing, limitations, and future scope.
+• Prepared the formal project report containing the project introduction, objectives, methodology, implementation, results, testing, screenshots, analysis, and conclusion.
+• Prepared Agile documentation covering project planning, milestones, tasks, progress, challenges, and completed work.
+
+FINAL PROJECT OUTCOME
+
+The completed system is an end-to-end AI Response Quality Evaluation Platform that can:
+
+• Evaluate a single AI response.
+• Evaluate multiple AI responses using a CSV file.
+• Measure Relevance, Accuracy, Completeness, and Hallucination.
+• Generate an overall quality score and final verdict.
+• Provide improvement suggestions.
+• Use RAG and ChromaDB for evidence-supported evaluation.
+• Store and display evaluation history.
+• Visualize evaluation statistics through a dashboard.
+• Generate downloadable PDF evaluation reports.
+• Validate evaluation consistency.
+• Compare different AI systems using the same evaluation dataset.
+• Support complete testing, documentation, reporting, and final project demonstration.
+
+---
 # ⭐ Key Features
 
 ## 1. Single Response Evaluation
