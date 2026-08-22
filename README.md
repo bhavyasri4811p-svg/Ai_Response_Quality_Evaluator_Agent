@@ -1,93 +1,173 @@
-# AI Response Quality Evaluator Agent
+# 🤖AI-Response-Validation-System-with-Hallucination-Detection-Assistance
 
-An AI-powered response evaluation system that analyzes Large Language Model (LLM) outputs using multiple judge agents. The application evaluates AI-generated responses based on relevance, factual accuracy, hallucination risk, and overall response quality.
+### A Multi-Agent RAG-Based Platform for Automated Evaluation of AI-Generated Responses
 
-## Features
+---
 
-- Multi-Agent Evaluation Pipeline
-- Relevance Judge Agent
-- Accuracy Judge Agent
-- Hallucination Detection Agent
-- AI Judge Orchestrator
-- FastAPI Backend
-- React + TypeScript Frontend
-- Interactive Dashboard
-- Evaluation History
-- Downloadable Reports
-- ChromaDB-based Retrieval Support
+## 📌 Project Overview
 
-## Tech Stack
+Large Language Models (LLMs) such as ChatGPT and other AI systems are capable of generating highly detailed answers. However, an AI-generated response may not always be reliable.
 
-### Frontend
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
+A response can be:
 
-### Backend
-- FastAPI
-- Python
-- ChromaDB
+- Relevant but factually incorrect
+- Accurate but incomplete
+- Well-written but unrelated to the question
+- Containing unsupported or hallucinated information
+- Partially correct but missing important information
 
-### AI
-- Groq LLM
-- Prompt Engineering
-- Multi-Agent Evaluation
+Manually evaluating a large number of AI-generated responses is time-consuming and difficult to maintain consistently.
 
-## Project Structure
+To address this problem, we developed the **AI Response Quality Evaluator Agent**, a full-stack intelligent platform that automatically evaluates AI-generated responses across multiple quality dimensions.
 
-```
-AI_RESPONSE_EVALUATOR
-│
-├── Backend
-│   ├── agents
-│   ├── rag
-│   ├── documents
-│   ├── data_loader
-│   ├── main.py
-│   ├── judge_orchestrator.py
-│   └── requirements.txt
-│
-├── Frontend
-│   ├── src
-│   ├── public
-│   ├── package.json
-│   └── vite.config.ts
-│
-└── README.md
-```
+The system uses a **multi-agent architecture**, **Large Language Models**, **Retrieval-Augmented Generation (RAG)**, **ChromaDB**, **FastAPI**, and a **React + TypeScript frontend**.
 
-## Evaluation Metrics
+The platform supports both **single-response evaluation** and **batch evaluation using CSV files**, followed by evaluation history, dashboard analysis, and downloadable PDF reports.
 
-- Correctness
-- Relevance
-- Hallucination Risk
-- Overall Score
-- Faithfulness
-- Completeness
-- Fluency
+---
 
-## Workflow
+# 🎯 Problem Statement
 
-1. User enters Question
-2. AI Response is submitted
-3. Judge Orchestrator calls all evaluation agents
-4. Scores are generated
-5. Frontend displays evaluation report
+AI-generated responses need to be evaluated not only for whether they answer a question, but also for whether they are:
 
-## Future Improvements
+1. Relevant to the question
+2. Factually accurate
+3. Complete
+4. Free from unsupported claims or hallucinations
 
-- Additional Judge Agents
-- RAGAS Integration
-- TruLens Support
-- PDF Report Export
-- Authentication
-- Persistent Database
+Existing manual evaluation processes become difficult when thousands of responses need to be assessed.
 
-## Author
+Therefore, the goal of this project is to develop an automated platform that can:
 
-**Bhavya Sri Pampana**
+> **Evaluate AI-generated responses using multiple specialized evaluation agents, retrieve supporting information using RAG, calculate dimension-wise quality scores, generate an overall verdict, process multiple responses in batch, and provide analytical reports.**
 
-B.Tech - Artificial Intelligence and Machine Learning
+---
 
-Shri Vishnu Engineering College for Women
+# 🎯 Project Objectives
+
+The major objectives of the project are:
+
+- Develop an automated AI response evaluation platform.
+- Evaluate responses using multiple independent quality dimensions.
+- Detect hallucinated or unsupported information.
+- Use RAG to provide supporting context during evaluation.
+- Store knowledge using a vector database.
+- Implement specialized evaluation agents.
+- Generate dimension-wise scores.
+- Generate an overall quality score and verdict.
+- Support single response evaluation.
+- Support CSV-based batch evaluation.
+- Maintain evaluation history.
+- Provide an evaluation dashboard.
+- Generate downloadable PDF reports.
+- Test the complete system end-to-end.
+- Validate evaluation consistency.
+- Compare responses from different AI systems.
+
+---
+
+# ⭐ Key Features
+
+## 1. Single Response Evaluation
+
+The user can enter:
+
+- Question
+- AI-generated response
+
+The platform sends the input to the evaluation pipeline and generates:
+
+- Relevance score
+- Accuracy score
+- Completeness score
+- Hallucination result
+- Overall score
+- Final verdict
+- Evaluation explanation/reason
+
+---
+
+## 2. Multi-Agent Evaluation
+
+The system does not depend on a single evaluation agent.
+
+Instead, different agents are responsible for different evaluation dimensions.
+
+### Evaluation Agents
+
+| Agent | Responsibility |
+|---|---|
+| Relevance Agent | Checks whether the response addresses the question |
+| Accuracy Agent | Checks factual correctness |
+| Hallucination Agent | Detects unsupported or fabricated claims |
+| Completeness Agent | Checks whether important information is covered |
+| Verdict Agent | Generates the final quality verdict |
+
+This separation makes the evaluation process more structured and interpretable.
+
+---
+
+# 🧠 Why Multiple Agents?
+
+A single evaluator would need to perform several different tasks simultaneously.
+
+For example:
+
+- One task requires understanding relevance.
+- Another requires checking factual correctness.
+- Another requires identifying unsupported claims.
+- Another requires checking whether the answer is complete.
+
+Instead of giving all these responsibilities to one evaluator, the system separates them into specialized agents.
+
+This provides:
+
+- Clear responsibilities
+- Dimension-wise scoring
+- Easier debugging
+- Better interpretability
+- Independent evaluation
+- Easier future improvements
+
+---
+
+# 🏗️ Overall System Architecture
+
+```text
+                         USER
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │  React Frontend │
+                  └────────┬────────┘
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │   FastAPI API   │
+                  └────────┬────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │ Judge Orchestrator│
+                 └─────────┬─────────┘
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+   Relevance Agent   Accuracy Agent   Hallucination Agent
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                           ▼
+                  Completeness Agent
+                           │
+                           ▼
+                     Verdict Agent
+                           │
+                           ▼
+                Overall Evaluation Result
+                           │
+             ┌─────────────┼─────────────┐
+             │             │             │
+             ▼             ▼             ▼
+          History      Dashboard      PDF Report
